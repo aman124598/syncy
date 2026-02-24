@@ -37,6 +37,10 @@ export const config = {
     process.env.PYTHON_PATH ?? "services/ai/.venv/Scripts/python.exe",
   aiModelSize: process.env.AI_MODEL_SIZE ?? "base.en",
   aiModelDir: process.env.AI_MODEL_DIR ?? "services/ai/models",
+  corsOrigins: (process.env.CORS_ORIGIN ?? `http://${process.env.APP_HOST ?? "127.0.0.1"}:${process.env.WEB_PORT ?? "5173"}`)
+    .split(",")
+    .map((origin) => origin.trim())
+    .filter(Boolean),
   dataRoot: process.env.DATA_ROOT ?? "data",
   maxUploadMb: Number(process.env.MAX_UPLOAD_MB ?? "512"),
   jobConcurrency: Math.max(1, Number(process.env.JOB_CONCURRENCY ?? "1"))

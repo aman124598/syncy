@@ -2,6 +2,8 @@
 
 Base URL: `http://127.0.0.1:3000`
 
+CORS is controlled by `CORS_ORIGIN` (comma-separated origins or `*`).
+
 ## `GET /api/preflight`
 Returns dependency readiness checks.
 

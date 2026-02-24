@@ -1,0 +1,6 @@
+{
+  "framework": "vite",
+  "installCommand": "pnpm install",
+  "buildCommand": "pnpm --filter @syncy/web build",
+  "outputDirectory": "apps/web/dist"
+}

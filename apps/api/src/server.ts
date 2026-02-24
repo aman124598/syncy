@@ -27,7 +27,11 @@ const upload = multer({
 export function createServer(): express.Express {
   const app = express();
 
-  app.use(cors({ origin: `http://${config.host}:${config.webPort}` }));
+  const corsOrigin =
+    config.corsOrigins.includes("*") || config.corsOrigins.length === 0
+      ? true
+      : config.corsOrigins;
+  app.use(cors({ origin: corsOrigin }));
   app.use(express.json({ limit: "2mb" }));
 
   app.use("/media/uploads", express.static(paths.uploadsRoot));

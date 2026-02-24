@@ -35,6 +35,30 @@ Invoke-RestMethod http://127.0.0.1:3000/api/preflight
 
 The smoke script generates sample media, submits a job, waits for analysis + render, and verifies output duration.
 
+## Deploy backend on Render (Docker)
+- Render service type: `Web Service` using `Docker`.
+- Use repo root `Dockerfile`.
+- Mount a persistent disk at `/var/data` (recommended for SQLite, uploads, outputs, and model cache).
+- Set backend env vars in Render:
+  - `APP_HOST=0.0.0.0`
+  - `APP_PORT=3000`
+  - `PYTHON_PATH=/app/services/ai/.venv/bin/python`
+  - `AI_MODEL_SIZE=base.en`
+  - `AI_MODEL_DIR=/var/data/models`
+  - `DATA_ROOT=/var/data`
+  - `FFMPEG_BIN=ffmpeg`
+  - `FFPROBE_BIN=ffprobe`
+  - `CORS_ORIGIN=https://<your-vercel-domain>`
+
+`render.yaml` is included for blueprint-based setup.
+
+## Deploy frontend on Vercel
+- Import this repo in Vercel.
+- Use root-level `vercel.json` or set equivalent in project settings.
+- Add env var:
+  - `VITE_API_BASE=https://<your-render-backend-domain>`
+- Redeploy after setting the env var.
+
 ## Troubleshooting
 - If preflight fails model check: rerun `./scripts/setup.ps1`.
 - If ffmpeg is missing: install FFmpeg and ensure `ffmpeg`/`ffprobe` are in PATH.

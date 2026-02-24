@@ -1,0 +1,30 @@
+services:
+  - type: web
+    name: syncy-api
+    runtime: docker
+    dockerfilePath: ./Dockerfile
+    healthCheckPath: /api/health
+    autoDeploy: true
+    disks:
+      - name: syncy-data
+        mountPath: /var/data
+        sizeGB: 20
+    envVars:
+      - key: APP_HOST
+        value: 0.0.0.0
+      - key: APP_PORT
+        value: "3000"
+      - key: PYTHON_PATH
+        value: /app/services/ai/.venv/bin/python
+      - key: AI_MODEL_SIZE
+        value: base.en
+      - key: AI_MODEL_DIR
+        value: /var/data/models
+      - key: DATA_ROOT
+        value: /var/data
+      - key: FFMPEG_BIN
+        value: ffmpeg
+      - key: FFPROBE_BIN
+        value: ffprobe
+      - key: CORS_ORIGIN
+        value: https://your-vercel-domain.vercel.app

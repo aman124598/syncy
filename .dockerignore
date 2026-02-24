@@ -1,0 +1,15 @@
+.git
+.github
+node_modules
+**/node_modules
+**/dist
+.pnpm-store
+coverage
+*.log
+.env
+data
+services/ai/.venv
+services/ai/models
+apps/web/dist
+apps/api/dist
+packages/shared/dist
