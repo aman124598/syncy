@@ -6,10 +6,10 @@ services:
     dockerfilePath: ./Dockerfile
     healthCheckPath: /api/health
     autoDeploy: true
-    disks:
-      - name: syncy-data
-        mountPath: /var/data
-        sizeGB: 20
+    disk:
+      name: syncy-data
+      mountPath: /var/data
+      sizeGB: 20
     envVars:
       - key: APP_HOST
         value: 0.0.0.0
