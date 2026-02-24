@@ -1,0 +1,19 @@
+{
+  "name": "syncy",
+  "private": true,
+  "version": "0.1.0",
+  "packageManager": "pnpm@9.12.2",
+  "scripts": {
+    "dev": "concurrently \"pnpm --filter @syncy/api dev\" \"pnpm --filter @syncy/web dev\"",
+    "build": "pnpm -r build",
+    "test": "pnpm -r test",
+    "lint": "pnpm -r lint",
+    "typecheck": "pnpm -r typecheck",
+    "setup": "powershell -ExecutionPolicy Bypass -File ./scripts/setup.ps1",
+    "smoke": "powershell -ExecutionPolicy Bypass -File ./scripts/smoke.ps1"
+  },
+  "devDependencies": {
+    "concurrently": "^9.2.1",
+    "typescript": "^5.9.3"
+  }
+}
