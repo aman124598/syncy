@@ -2,6 +2,7 @@ services:
   - type: web
     name: syncy-api
     runtime: docker
+    plan: starter
     dockerfilePath: ./Dockerfile
     healthCheckPath: /api/health
     autoDeploy: true

@@ -37,6 +37,7 @@ The smoke script generates sample media, submits a job, waits for analysis + ren
 
 ## Deploy backend on Render (Docker)
 - Render service type: `Web Service` using `Docker`.
+- Use at least Render `starter` plan (persistent disks are not available on free web services).
 - Use repo root `Dockerfile`.
 - Mount a persistent disk at `/var/data` (recommended for SQLite, uploads, outputs, and model cache).
 - Set backend env vars in Render:
